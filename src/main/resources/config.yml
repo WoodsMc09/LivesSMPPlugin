@@ -1,0 +1,35 @@
+#==========================================
+#LIVESSMP config.yml
+#==========================================
+
+#CHATCOLOR CODES:
+#&1 = DARK BLUE
+#&2 = GREEN
+#&3 = DARK CYAN
+#&4 = RED
+#&5 = PURPLE
+#&6 = GOLD
+#&7 = LIGHT GRAY
+#&8 = GRAY
+#&9 = BLUE
+#&c = LIGHT RED
+#&e = YELLOW
+#&b = LIGHT BLUE
+#&d = PINK
+#&f = WHITE
+
+#&k = OBFUSCATED/MAGIC (scrolls through random symbols making it unreadable)
+#&l = BOLD
+#&m = STRIKE THROUGH
+#&n = UNDERLINE
+#&o = ITALIC
+#&r = RESET
+
+#chat color formatters are used after the chatcolor! EXAMPLE (Blue Bold): &1&lThis message is blue and bold
+
+#==========================================
+#LIVESSMP MESSAGES
+#==========================================
+Message-Prefix: '&f&lLIVESSMP'
+
+command-invalid-permissions:

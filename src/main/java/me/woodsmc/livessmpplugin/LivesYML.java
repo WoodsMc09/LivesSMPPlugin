@@ -43,6 +43,7 @@ public class LivesYML {
     }
     public void saveConfig(){
         if(this.config == null || this.configFile == null){
+            return;
         }
         try {
             getConfig().save(this.configFile);
