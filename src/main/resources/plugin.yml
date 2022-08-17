@@ -1,0 +1,6 @@
+name: LivesSMPPlugin
+version: '${project.version}'
+main: me.woodsmc.livessmpplugin.LivesSMPPlugin
+api-version: 1.19
+authors: [ WoodsMc ]
+description: plugin for the LivesSMP
