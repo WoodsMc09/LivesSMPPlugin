@@ -1,6 +1,6 @@
-#==========================================
+#=============================================
 #LIVESSMP config.yml
-#==========================================
+#=============================================
 
 #CHATCOLOR CODES:
 #&1 = DARK BLUE
@@ -27,9 +27,115 @@
 
 #chat color formatters are used after the chatcolor! EXAMPLE (Blue Bold): &1&lThis message is blue and bold
 
-#==========================================
-#LIVESSMP MESSAGES
-#==========================================
-Message-Prefix: '&f&lLIVESSMP'
 
-command-invalid-permissions:
+#=============================================
+#LIVESSMP MESSAGES CONFIGURATION
+
+#LIST OF MESSAGE VARIABLES: (ONLY SOME MESSAGES USE SOME VARIABLES MAKE SURE TO CHECK IF A MESSAGE IS COMPATIBLE WITH A VARIABLE!)
+#[prefix] = Message-Prefix (WORKS WITH EVERY MESSAGE)
+#[recipient] = the player who received something
+#[cmd-sender] = the player who executed the command
+#[count] = changes depending on the message
+#[banned] = only works on Lives-Banned-Broadcast
+#[revived] = changes depending on the message
+#[reviver] = only works on Lives-Revive-Player-Broadcast
+#[max] = only works on Lives-Max-Lives
+#=============================================
+Message-Prefix: '&c&lKlaidasLives &8>'
+
+Command-Invalid-Permissions: '[prefix] &4You do not have valid permissions to execute this command!'
+
+Command-Set-Lives(admin): "[prefix] &4[recipient]'s &flife count is now &4[count]&f!" #[count] = how many lives the recipient has, [recipient] the player that got their lives set
+Command-Set-Lives(recipient): "[prefix] &fYour lives have been set to &4[count] &fby &4[cmd-sender]" #[count] = how many lives the recipient has, [cmd-sender] the player that set the recipients lives
+Command-Get-Lives: "[prefix] &4[recipient]&f has &4[count] &flives" #[count] = how many lives the recipient has, [recipient] the player that's getting checked
+
+Command-Add-Lives(admin): "[prefix] &fAdded &4[count] &flives to &4[recipient]" #[count] = how many lives the recipient got, [recipient] the player that got lives
+Command-Add-Lives(recipient): "[prefix] &fYou have been given &4[count] &fLives from &4[cmd-sender]" #[count] = how many lives the recipient got, [cmd-sender] = the player that gave hearts
+
+Command-Remove-Lives(admin): "[prefix] &fRemoved &4[count] &flives from &4[recipient]" #[count] = how many lives the recipient lost, [recipient] the player that lost their lives
+Command-Remove-Lives(recipient): "[prefix] &fYou have lost &4[count] &fLives from &4[cmd-sender]" #[count] = how many lives the recipient lost, [cmd-sender] = the player that took hearts
+
+Command-Withdraw-Lives: "[prefix] &fYou have withdrawn &4[count] &flives!" #[count] how many lives the recipient has withdrawn
+Command-Withdraw-Full-Inventory: "[prefix] &fYour inventory is full, cannot withdraw lives!" #no special variables!
+Command-Withdraw-Not-Enough-Lives: "[prefix] &fYou do not have enough lives to withdraw!" #no special variables
+
+Lives-Lose-Life: "[prefix] &fYou have lost a life!" #no special variables!
+Lives-Earn-Life: "[prefix] &fYou have earned a life!" #no special variables!
+Lives-Max-Lives: "[prefix] &fYou can not earn another life! you have the maximum of [max]"
+
+Lives-Revive-Player: "[prefix] &fYou have revived &4[revived]" #[revived] the player that got revived
+Lives-Revive-Player-Broadcast:
+  enabled: true
+  message: "[prefix] &4[revived] &fhas been revived by &4[reviver]!" #[revived] the player that got revived, [reviver] the player that revived [revived]
+
+Lives-Ban-Broadcast:
+  enabled: true
+  message: "[prefix] &4[banned] &fhas run out of lives and is now banned!" #[banned] the player that got banned
+
+
+#=============================================
+#LIVESSMP LIVES CONFIGURATION
+#=============================================
+lives-randomization:
+  minimum: 2
+  maximum: 8
+
+maximum-lives: 10
+
+life-item:
+  type: 'RED_DYE' #change this to any item (NOT BLOCK) in the game. make sure the name is correct. NOTE: to see this name in-game press F3+H to see tooltips and hover over an item to see it!
+  name: '&4A Life'
+  lore:
+    - '&7Right-Click to get another life!'
+revive_beacon-item:
+  type: 'BEACON'
+  name: '&4Revive Beacon'
+  lore:
+    - '&7Place to revive a eliminated player!'
+
+revive-gui-title: "&4REVIVE MENU"
+
+revive-player-item:
+  name: '&4Revive &c[player]' #[player] the player that is eliminated
+  lore:
+    - '&7Click to revive [player]' #[player] the player that is eliminated
+
+life-ban-reason:
+  - '&c&lKlaidasLives'
+  - '&4&lYou have run out of lives!'
+
+#=============================================
+#LIVESSMP TABLIST CONFIGURATION
+#=============================================
+tablist-suffix: '&f[&4[lives]&f]' #[lives] variable is the amount of lives the player has
+
+
+#=============================================
+#LIVESSMP CRAFT CONFIGURATION
+#every number indicates a slot in the crafting grid:
+#1, 2, 3,
+#4, 5, 6,
+#7, 8, 9
+#=============================================
+life:
+  1: 'DIAMOND_BLOCK'
+  2: 'DIAMOND_BLOCK'
+  3: 'DIAMOND_BLOCK'
+  4: 'DIAMOND_BLOCK'
+  5: 'DIAMOND_BLOCK'
+  6: 'DIAMOND_BLOCK'
+  7: 'DIAMOND_BLOCK'
+  8: 'DIAMOND_BLOCK'
+  9: 'DIAMOND_BLOCK'
+revive_beacon:
+  1: 'NETHERITE_BLOCK'
+  2: 'NETHERITE_BLOCK'
+  3: 'NETHERITE_BLOCK'
+  4: 'NETHERITE_BLOCK'
+  5: 'NETHERITE_BLOCK'
+  6: 'NETHERITE_BLOCK'
+  7: 'NETHERITE_BLOCK'
+  8: 'NETHERITE_BLOCK'
+  9: 'NETHERITE_BLOCK'
+
+

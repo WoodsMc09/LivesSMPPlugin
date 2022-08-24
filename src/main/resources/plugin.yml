@@ -4,3 +4,15 @@ main: me.woodsmc.livessmpplugin.LivesSMPPlugin
 api-version: 1.19
 authors: [ WoodsMc ]
 description: plugin for the LivesSMP
+commands:
+  lives:
+    description: manage players lives
+permissions:
+  livessmp.lives.withdraw.command:
+    description: allows access to /lives withdraw
+  livessmp.lives.set.command:
+    description: allows access to /lives set
+  livessmp.lives.add.command:
+    description: allows access to /lives add
+  livessmp.lives.remove.command:
+    description: allows access to /lives remove
