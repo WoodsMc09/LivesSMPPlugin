@@ -22,7 +22,7 @@ public class ReviveGUI {
     private List<ItemStack> playerItems = new ArrayList<>();
 
     public Inventory openGUI(){
-        inventory = Bukkit.createInventory(null, 45, ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("revive-gui-title")));
+        inventory = Bukkit.createInventory(null, 54, ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("revive-gui-title")));
         for(String s : plugin.getLivesYML().getConfig().getKeys(false)){
             OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(s));
             if(plugin.getLivesYML().getConfig().getInt(String.valueOf(player.getUniqueId())) == 0){

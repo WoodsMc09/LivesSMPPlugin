@@ -104,6 +104,10 @@ life-ban-reason:
   - '&c&lKlaidasLives'
   - '&4&lYou have run out of lives!'
 
+
+life-ban-punishment:
+  duration: -1 #Duration is in DAYS set to -1 for infinite!
+
 #=============================================
 #LIVESSMP TABLIST CONFIGURATION
 #=============================================

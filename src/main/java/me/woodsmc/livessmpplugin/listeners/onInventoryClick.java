@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.util.HashMap;
 import java.util.Locale;
 
 public class onInventoryClick implements Listener {
@@ -46,7 +47,7 @@ public class onInventoryClick implements Listener {
             if(meta.getCustomModelData() == 102847){
                 SkullMeta skullMeta = (SkullMeta) meta;
                 OfflinePlayer dead = skullMeta.getOwningPlayer();
-                Bukkit.getBanList(BanList.Type.NAME).pardon(dead.getName());
+                getBanned().remove(dead.getName().toLowerCase());
                 lives.setLives(dead, 1);
                 p.sendMessage(Message.REVIVED_PLAYER.replace("[revived]", dead.getName()));
                 if(plugin.getConfig().getBoolean("Lives-Revive-Player-Broadcast.enabled")){
@@ -58,5 +59,46 @@ public class onInventoryClick implements Listener {
                 p.closeInventory();
             }
         }
+    }
+
+
+    public HashMap<String, Long> getBanned(){
+        return LivesSMPPlugin.banned;
+    }
+
+    public void setBanned(String name, long end){
+        getBanned().put(name, end);
+    }
+
+    public static String getMSG(long endOfBan){
+        String message = "";
+
+        long now = System.currentTimeMillis();
+        long diff = endOfBan - now;
+        int seconds = (int) (diff / 1000);
+
+        if(seconds >= 60*60*24){
+            int days = seconds / (60*60*24);
+            seconds = seconds % (60*60*24);
+
+            message += days + " Day(s) ";
+        }
+        if(seconds >= 60*60){
+            int hours = seconds / (60*60);
+            seconds = seconds % (60*60);
+
+            message += hours + " Hour(s) ";
+        }
+        if(seconds >= 60){
+            int min = seconds / 60;
+            seconds = seconds % 60;
+
+            message += min + " Minute(s) ";
+        }
+        if(seconds >= 0){
+            message += seconds + " Second(s) ";
+        }
+
+        return message;
     }
 }

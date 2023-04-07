@@ -7,6 +7,10 @@ description: plugin for the LivesSMP
 commands:
   lives:
     description: manage players lives
+  tempban:
+    description: temporarily ban players
+  unban:
+    description: unban banned or ran out of lives players
 permissions:
   livessmp.lives.withdraw.command:
     description: allows access to /lives withdraw

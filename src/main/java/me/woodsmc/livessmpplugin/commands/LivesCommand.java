@@ -22,10 +22,6 @@ public class LivesCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender instanceof Player){
             Player p = (Player) sender;
-            if(!p.hasPermission("livessmp.lives.command")){
-                p.sendMessage(Message.INVALID_PERMISSIONS);
-                return true;
-            }
             if(args.length < 2 || args.length > 3){
                 p.sendMessage("§f§l/lives usages:");
                 if(p.hasPermission("livessmp.lives.set.command")) {
@@ -48,7 +44,7 @@ public class LivesCommand implements CommandExecutor, TabCompleter {
                 OfflinePlayer offP = Bukkit.getOfflinePlayer(args[1]);
                 OfflinePlayer player = Bukkit.getOfflinePlayer(offP.getUniqueId()); //if player changes their name this value won't change
                 if(args[0].equalsIgnoreCase("set")){
-                    if(!p.hasPermission("livessmp.lives.set.command")){
+                    if(!p.isOp()){
                         p.sendMessage(Message.INVALID_PERMISSIONS);
                         return true;
                     }
@@ -65,7 +61,7 @@ public class LivesCommand implements CommandExecutor, TabCompleter {
                     }
                 }
                 else if(args[0].equalsIgnoreCase("get")){
-                    if(!p.hasPermission("livessmp.lives.get.command")){
+                    if(!p.isOp()){
                         p.sendMessage(Message.INVALID_PERMISSIONS);
                         return true;
                     }
@@ -77,7 +73,7 @@ public class LivesCommand implements CommandExecutor, TabCompleter {
                     }
                 }
                 else if(args[0].equalsIgnoreCase("add")){
-                    if(!p.hasPermission("livessmp.lives.add.command")){
+                    if(!p.isOp()){
                         p.sendMessage(Message.INVALID_PERMISSIONS);
                         return true;
                     }
@@ -93,7 +89,7 @@ public class LivesCommand implements CommandExecutor, TabCompleter {
                     }
                 }
                 else if(args[0].equalsIgnoreCase("remove")){
-                    if(!p.hasPermission("livessmp.lives.remove.command")){
+                    if(!p.isOp()){
                         p.sendMessage(Message.INVALID_PERMISSIONS);
                         return true;
                     }
@@ -109,10 +105,6 @@ public class LivesCommand implements CommandExecutor, TabCompleter {
                     }
                 }
                 else if(args[0].equalsIgnoreCase("withdraw")){
-                    if(!p.hasPermission("livessmp.lives.withdraw.command")){
-                        p.sendMessage(Message.INVALID_PERMISSIONS);
-                        return true;
-                    }
                     if(lives.getLives(p) == 1){
                         p.sendMessage(Message.NOT_ENOUGH_LIVES);
                         return true;
